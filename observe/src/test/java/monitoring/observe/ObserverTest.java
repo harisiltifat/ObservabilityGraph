@@ -17,9 +17,9 @@ public class ObserverTest {
 	@Parameterized.Parameters(name = "Test with {0}")
     public static Collection<Object[]> data() {
         Object[][] data = new Object[][]{
-	        {"Graph1", 9, 5, 13, 22, "NO SUCH TRACE", 2, 3, 9, 9, 7}
-	        ,{"Graph2", 9, 5, 13, 22, "NO SUCH TRACE", 2, 3, 9, 9, 7}
-	        ,{"Graph3", 9, 5, 13, 22, "NO SUCH TRACE", 2, 3, 9, 9, 7}
+	        {"graph1", 9, 5, 13, 22, "NO SUCH TRACE", 2, 3, 9, 9, 7}
+	        ,{"graph2", 9, 5, 13, 22, "NO SUCH TRACE", 2, 3, 9, 9, 7}
+	        ,{"graph3", 9, 5, 13, 22, "NO SUCH TRACE", 2, 3, 9, 9, 7}
         };
         return Arrays.asList(data);
     }
@@ -60,12 +60,12 @@ public class ObserverTest {
 	// The average latency of the trace A-B-C.
 	@Test
 	public void averageLatencyABC() {
-		String path = "./";
+		String path = "./graphs";
 		GraphReader graphReader = new GraphReader(path+java.io.File.separator + graphName);
-		graphReader.traverseGraph();
-		GraphCalculator graphCalculator = new GraphCalculator(graphReader.getGraph());
+		
+		GraphTraversal graphTraversal = new GraphTraversal(graphReader.getGraph());
 
-		int avgLatency = graphCalculator.getAverageLatencyABC();
+		int avgLatency = graphTraversal.getAverageLatencyABC();
 		assertEquals(5, avgLatency);
 	}
 
