@@ -85,5 +85,21 @@ public class ObserverTest {
 		int avgLatency = GraphTraversal.getAverageLatencyADC(graphReader.getGraph());
 		assertEquals(adc, avgLatency);
 	}
+	
+	@Test
+	public void averageLatencyAEBCD() {
+		String path = "./src/test/resources/graphs/correct";
+		GraphReader graphReader = new GraphReader(path+java.io.File.separator + graphName+".txt");
+		int avgLatency = GraphTraversal.getAverageLatencyAEBCD(graphReader.getGraph());
+		assertEquals(aebcd, avgLatency);
+	}
+	
+	@Test
+	public void averageLatencyAED() {
+		String path = "./src/test/resources/graphs/correct";
+		GraphReader graphReader = new GraphReader(path+java.io.File.separator + graphName+".txt");
+		int avgLatency = GraphTraversal.getAverageLatencyAED(graphReader.getGraph());
+		assertEquals(aed, avgLatency);
+	}
 
 }

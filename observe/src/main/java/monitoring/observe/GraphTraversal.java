@@ -40,5 +40,27 @@ public class GraphTraversal {
 		return avglatencyAD + avglatencyDC;
 	}
 	
+	
+	public static int getAverageLatencyAEBCD(int[][] graph) {
+		checkGraph(graph);
+		int avglatencyAE=graph[0]['E'-'A'];
+		int avglatencyEB = graph['E'-'A']['B'-'A'];
+		int avglatencyBC = graph['B'-'A']['C'-'A'];
+		int avglatencyCD = graph['C'-'A']['D'-'A'];
+		
+		if(avglatencyAE==0 || avglatencyEB==0 || avglatencyBC==0 || avglatencyCD==0)
+			return -1;
+		return avglatencyAE + avglatencyEB + avglatencyBC + avglatencyCD;
+	}
+	
+	public static int getAverageLatencyAED(int[][] graph) {
+		checkGraph(graph);
+		int avglatencyAD=graph[0]['E'-'A'];
+		int avglatencyDC = graph['E'-'A']['D'-'A'];
+		if(avglatencyAD==0 || avglatencyDC==0)
+			return -1;
+		return avglatencyAD + avglatencyDC;
+	}
+	
 
 }
