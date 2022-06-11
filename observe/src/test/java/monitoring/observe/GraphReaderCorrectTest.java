@@ -53,9 +53,8 @@ public class GraphReaderCorrectTest {
 	    @Test
 	    public void testcountGraphNodes() {
 			GraphReader graphReader = new GraphReader(path+java.io.File.separator + graphName+".txt");
-
-	    	Map<Character, Node> mapGraph=graphReader.getGraph();
-	    	int count=mapGraph.size();
+	    	int[][] graph=graphReader.getGraph();
+	    	int count=graph.length;
 	    	assertEquals(nodesCount,count);
 	    }
 	    
@@ -63,14 +62,12 @@ public class GraphReaderCorrectTest {
 	    public void testcorrectGraphPaths() {
 			GraphReader graphReader = new GraphReader(path+java.io.File.separator + graphName+".txt");
 
-	    	Map<Character, Node> mapGraph=graphReader.getGraph();
+			int[][] graph=graphReader.getGraph();
 	    	List<Integer> lstWeight=new ArrayList<>();
-	    	Node startNode=mapGraph.get('A');
-	    	Node endNode= mapGraph.get('B');
-	    	int weightAB=startNode.getLinkedNodes().get(endNode);
-	       	startNode=mapGraph.get('C');
-	    	endNode= mapGraph.get('D');
-	       	int weightCD=startNode.getLinkedNodes().get(endNode);
+
+	    	int weightAB=graph['A'-'A']['B'-'A'];
+
+	       	int weightCD=graph['C'-'A']['D'-'A'];
 	    	lstWeight.add(weightAB);
 	    	lstWeight.add(weightCD);
 	    	

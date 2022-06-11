@@ -1,1 +1,1 @@
-AB5, BC4, CD8
+BC4, CD8
