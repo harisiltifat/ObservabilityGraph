@@ -1,1 +1,2 @@
-BC4, CD8
+//Only first node of the path (if path is longer) is present. For e.g. ABC -> AB5
+AB5, CD10

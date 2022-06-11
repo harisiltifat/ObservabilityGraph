@@ -16,7 +16,8 @@ import monitoring.graph.Node;
 
 public class GraphReader {
 	
-	int[][] graph;
+	//Only A to E Microservices will be entertained
+	int[][] graph = new int[5][5];
 	GraphReader(String path){
 		Objects.requireNonNull(path);
 		List<String> lst=null;
@@ -38,24 +39,16 @@ public class GraphReader {
 	 * @param lst of input as a graph
 	 */
 	private void readGraph(List<String> lst) {
-		if(lst.size()>1)
+		if(lst.size()>2)
 			throw new ReadGraphException("No two graphs can in the same file can be processed");
 		
-		String graphString=lst.get(0);
+		int validGraph=0;
+		if(lst.get(0).contains("//")) 
+			validGraph++;
+		
+		String graphString=lst.get(validGraph);
 		String[] graphPaths=graphString.split(",");
-		Set<Character> nodeCount=new HashSet<>();
-		
-		//Identifying unique nodes and put them into a hash set for later getting the count of total nodes.
-		for(String str:graphPaths) {
-			str=str.trim();
-			if(str.length()<3 || Character.isDigit(str.charAt(0)) || Character.isDigit(str.charAt(1))) {
-				throw new ReadGraphException("Invalid graph: Check the input");
-			}
-			nodeCount.add(str.charAt(0));
-			nodeCount.add(str.charAt(1));
-		}
-		
-		graph=new int[nodeCount.size()][nodeCount.size()];
+
 		for(String str:graphPaths) {
 			str=str.trim();
 			if(str.length()<3 || Character.isDigit(str.charAt(0)) || Character.isDigit(str.charAt(1))) {

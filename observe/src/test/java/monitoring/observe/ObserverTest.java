@@ -17,8 +17,9 @@ public class ObserverTest {
     public static Collection<Object[]> data() {
         Object[][] data = new Object[][]{
 	        {"graph1", 9, 5, 13, 22, -1, 2, 3, 9, 9, 7}
-	        ,{"graph2", -1, 5, 13, 22, -1, 2, 3, 9, 9, 7}
-	        ,{"graph3", -1, 5, 13, 22, -1, 2, 3, 9, 9, 7}
+	        ,{"graph2", -1, -1, -1, 22, -1, 2, 3, 9, 9, 7}
+	        ,{"graph3", -1, 5, -1, 22, -1, 2, 3, 9, 9, 7}  
+	        ,{"graph4", -1, -1, -1, 22, -1, 2, 3, 9, 9, 7}
         };
         return Arrays.asList(data);
     }
@@ -67,7 +68,21 @@ public class ObserverTest {
 		int avgLatency = GraphTraversal.getAverageLatencyABC(graphReader.getGraph());
 		assertEquals(abc, avgLatency);
 	}
-
 	
+	@Test
+	public void averageLatencyAD() {
+		String path = "./src/test/resources/graphs/correct";
+		GraphReader graphReader = new GraphReader(path+java.io.File.separator + graphName+".txt");
+		int avgLatency = GraphTraversal.getAverageLatencyAD(graphReader.getGraph());
+		assertEquals(ad, avgLatency);
+	}
+
+	@Test
+	public void averageLatencyADC() {
+		String path = "./src/test/resources/graphs/correct";
+		GraphReader graphReader = new GraphReader(path+java.io.File.separator + graphName+".txt");
+		int avgLatency = GraphTraversal.getAverageLatencyADC(graphReader.getGraph());
+		assertEquals(adc, avgLatency);
+	}
 
 }

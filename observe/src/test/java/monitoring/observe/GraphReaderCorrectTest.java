@@ -24,40 +24,42 @@ public class GraphReaderCorrectTest {
 		@Parameters(name = "Graph Reader Test with correct {0}")
 	    public static Collection<Object[]> data() {
 	        Object[][] data = new Object[][]{
-		        {"graph1",5,8,5}
-		        ,{"graph2",5,8,4}
-		        ,{"graph3",5,10,4}
+		        {"graph1",'A','B',5, 'A','E',7}
+		        ,{"graph2",'A','B',5, 'C','D',10}
+		        ,{"graph3",'B','C',4, 'A','D',5}
+		        ,{"graph4",'B','A',5, 'D','A',2}
+		        ,{"graph5",'B','A',5, 'D','A',2}
 	        };
 	        return Arrays.asList(data);
 	    }
 	    
-	    // fields used together with @Parameter must be public
 	    @Parameterized.Parameter(0)
 	    public String graphName;
 	    
-	    // fields used together with @Parameter must be public
 	    @Parameterized.Parameter(1)
-	    public int atob;
+	    public char firstNode;
 	    
 	    @Parameterized.Parameter(2)
-	    public int ctod;
+	    public char secondNode;
 	    
 	    @Parameterized.Parameter(3)
-	    public int nodesCount;
+	    public int weightFirstPath;
+	    
+	    @Parameterized.Parameter(4)
+	    public char secondLastNode;
+	    
+	    @Parameterized.Parameter(5)
+	    public char lastNode;
+	    
+	    @Parameterized.Parameter(6)
+	    public int weightLastPath;
 	    
 	    @Test(expected=NullPointerException.class)
 	    public void testNullGraphName() {
 	    	new GraphReader(null);
 	    }
 	    
-	    @Test
-	    public void testcountGraphNodes() {
-			GraphReader graphReader = new GraphReader(path+java.io.File.separator + graphName+".txt");
-	    	int[][] graph=graphReader.getGraph();
-	    	int count=graph.length;
-	    	assertEquals(nodesCount,count);
-	    }
-	    
+	    //Test the start path and end path. If they are correctly represented in the graph then remaining should be correctly represented as well.
 	    @Test
 	    public void testcorrectGraphPaths() {
 			GraphReader graphReader = new GraphReader(path+java.io.File.separator + graphName+".txt");
@@ -65,13 +67,13 @@ public class GraphReaderCorrectTest {
 			int[][] graph=graphReader.getGraph();
 	    	List<Integer> lstWeight=new ArrayList<>();
 
-	    	int weightAB=graph['A'-'A']['B'-'A'];
+	    	int weightGraphFirstPath=graph[firstNode-'A'][secondNode-'A'];
 
-	       	int weightCD=graph['C'-'A']['D'-'A'];
-	    	lstWeight.add(weightAB);
-	    	lstWeight.add(weightCD);
+	       	int weightGraphLastPath=graph[secondLastNode-'A'][lastNode-'A'];
+	    	lstWeight.add(weightGraphFirstPath);
+	    	lstWeight.add(weightGraphLastPath);
 	    	
-	    	Integer[] weights= {atob,ctod}; 
+	    	Integer[] weights= {weightFirstPath,weightLastPath}; 
 	    	List<Integer> lst2=new ArrayList<>(Arrays.asList(weights));
 	    	assertTrue(lstWeight.equals(lst2));
 	    }
