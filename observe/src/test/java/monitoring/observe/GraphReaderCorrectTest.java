@@ -28,7 +28,7 @@ public class GraphReaderCorrectTest {
 		        ,{"graph2",'A','B',5, 'C','D',10}
 		        ,{"graph3",'B','C',4, 'A','D',5}
 		        ,{"graph4",'B','A',5, 'D','A',2}
-		        ,{"graph5",'B','A',5, 'D','A',2}
+		        ,{"graphWithoutDescription",'B','A',5, 'D','A',2}
 	        };
 	        return Arrays.asList(data);
 	    }

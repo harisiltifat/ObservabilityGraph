@@ -20,6 +20,7 @@ public class ObserverTest {
 	        ,{"graph2", -1, -1, -1, 22, -1, 2, 3, 9, 9, 7}
 	        ,{"graph3", -1, 5, -1, 22, -1, 2, 3, 9, 9, 7}  
 	        ,{"graph4", -1, -1, -1, 22, -1, 2, 3, 9, 9, 7}
+	        ,{"graphWithoutDescription", -1, -1, -1, 22, -1, 2, 3, 9, 9, 7}
         };
         return Arrays.asList(data);
     }
