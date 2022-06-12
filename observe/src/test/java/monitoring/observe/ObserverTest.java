@@ -17,10 +17,10 @@ public class ObserverTest {
     public static Collection<Object[]> data() {
         Object[][] data = new Object[][]{
 	        {"graph1", 9, 5, 13, 22, -1, 2, 3, 9, 9, 7}
-	        ,{"graph2", -1, -1, -1, 22, -1, 2, 3, 9, 9, 7}
-	        ,{"graph3", -1, 5, -1, 22, -1, 2, 3, 9, 9, 7}  
-	        ,{"graph4", -1, -1, -1, 22, -1, 2, 3, 9, 9, 7}
-	        ,{"graphWithoutDescription", -1, -1, -1, 22, -1, 2, 3, 9, 9, 7}
+	        ,{"graph2", -1, -1, -1, -1, -1, 2, 3, 9, 9, 7}
+	        ,{"graph3", -1, 5, -1, -1, -1, 2, 3, 9, 9, 7}  
+	        ,{"graph4", -1, -1, -1, -1, -1, 2, 3, 9, 9, 7}
+	        ,{"graphWithoutDescription", -1, -1, -1, -1, -1, 2, 3, 9, 9, 7}
         };
         return Arrays.asList(data);
     }
@@ -100,6 +100,22 @@ public class ObserverTest {
 		GraphReader graphReader = new GraphReader(path+java.io.File.separator + graphName+".txt");
 		int avgLatency = GraphTraversal.getAverageLatencyAED(graphReader.getGraph());
 		assertEquals(aed, avgLatency);
+	}
+	
+	@Test
+	public void tracesCtoC3Hops() {
+		String path = "./src/test/resources/graphs/correct";
+		GraphReader graphReader = new GraphReader(path+java.io.File.separator + graphName+".txt");
+		int tracesCtoC = GraphTraversal.getAverageLatencyCtoC3Hops(graphReader.getGraph());
+		assertEquals(cc, tracesCtoC);
+	}
+	
+	@Test
+	public void tracesAtoC4Hops() {
+		String path = "./src/test/resources/graphs/correct";
+		GraphReader graphReader = new GraphReader(path+java.io.File.separator + graphName+".txt");
+		int tracesAtoC = GraphTraversal.getAverageLatencyAtoC4Hops(graphReader.getGraph());
+		assertEquals(ac, tracesAtoC);
 	}
 
 }

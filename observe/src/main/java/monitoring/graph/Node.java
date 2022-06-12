@@ -5,24 +5,20 @@ import java.util.List;
 import java.util.Map;
 
 public class Node {
-    Map<Node, Integer> mapLinkedNodes=new HashMap<>();
-    Map<List<Node>, Integer> reachingPaths= new HashMap<>();
-    Character name;
-
-	public Node(Character name){
-		this.name=name;
+	//respresents position of node in the graph
+    private int pos;
+    
+    //respresents number of hops needed to reach to this node
+    private int hops;
+    
+    public Node(int pos, int hops) {
+    	this.pos=pos;
+    	this.hops = hops;
+    }
+	public int getHops() {
+		return hops;
 	}
-	//A given connection will never appear more than once and for a given
-	//connection the starting and ending service will not be the same service.
-	public void addLinkNode(Node endNode, int weight) {
-		mapLinkedNodes.put(endNode, weight);
+	public int getPos() {
+		return pos;
 	}
-	
-	public Map<Node, Integer> getLinkedNodes(){
-		return mapLinkedNodes;
-	}
-	
-	
-	
-	
 }

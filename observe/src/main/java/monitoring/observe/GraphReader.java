@@ -18,7 +18,7 @@ public class GraphReader {
 	
 	//Only A to E Microservices will be entertained
 	int[][] graph = new int[5][5];
-	GraphReader(String path){
+	public GraphReader(String path){
 		Objects.requireNonNull(path);
 		List<String> lst=null;
 		try {

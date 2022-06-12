@@ -1,4 +1,4 @@
-package monitoring.observe;
+package monitoring.observe.graphReader;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -17,6 +17,7 @@ import org.junit.runners.Parameterized.Parameters;
 
 import monitoring.exceptions.ReadGraphException;
 import monitoring.graph.Node;
+import monitoring.observe.GraphReader;
 
 @RunWith(Parameterized.class)
 public class GraphReaderInCorrectTest {
