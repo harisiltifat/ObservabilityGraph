@@ -96,7 +96,33 @@ public class GraphTraversal {
 		return numOfTraces;
 	}
 
+	/**
+	 * Get neighbours of a node. While getting Neighbours, a Node object is used to save the position of the neighbour
+	 * ,total number of hops and total average latency required to reach that neighbour from source.
+	 * @param graph
+	 * @param nodePos
+	 * @param hops
+	 * @param avgLatency
+	 * @return
+	 */
+	private static List<Node> getNeighbours(int[][] graph, int nodePos, int hops, int avgLatency) {
+		return getMyNeighbours(graph, nodePos, hops, avgLatency);
+	}
+	
+	/**
+	 * Get neighbours of a node. While getting Neighbours, a Node object is used to save the position of the neighbour
+	 * ,total number of hops required to reach that neighbour from source.
+	 * @param graph
+	 * @param nodePos
+	 * @param hops
+	 * @param avgLatency
+	 * @return
+	 */
 	private static List<Node> getNeighbours(int[][] graph, int nodePos, int hops) {
+		return getMyNeighbours(graph, nodePos, hops, 0);
+	}
+
+	private static List<Node> getMyNeighbours(int[][] graph, int nodePos, int hops, int avgLatency) {
 		List<Node> lst = new ArrayList<>();
 		hops++;
 		// Adding all childrens of c
@@ -105,7 +131,8 @@ public class GraphTraversal {
 			// present
 			if (graph[nodePos][j] == 0)
 				continue;
-			Node node = new Node(j, hops);
+			
+			Node node = new Node(j, hops, avgLatency + graph[nodePos][j]);
 			lst.add(node);
 		}
 		return lst;
@@ -132,6 +159,36 @@ public class GraphTraversal {
 			}
 			neighbours = getNeighbours(graph, neighbour.getPos(), neighbour.getHops());
 			queue.addAll(neighbours);
+		}
+		return numOfTraces;
+	}
+	
+	/**
+	 * Return all paths from C to C. Perform BFS in a loop fashion.
+	 * @param graph
+	 * @return
+	 */
+	public static int getTracesCtoC30Latency(int[][] graph) {
+		checkGraph(graph);
+		// Position of c in graph
+		int cpos = 2;
+		int hops = 0;
+		int avgLatency=0;
+		int numOfTraces = 0;
+		List<Node> neighbours = getNeighbours(graph, cpos, hops, avgLatency);
+		Queue<Node> queue = new LinkedList<>();
+		queue.addAll(neighbours);
+
+		while (!queue.isEmpty()) {
+			Node neighbour = queue.poll();
+
+			if (neighbour.getAvgLatency() < 30) {
+				if (neighbour.getPos() == cpos)
+					numOfTraces++;
+
+				neighbours = getNeighbours(graph, neighbour.getPos(), neighbour.getHops(), neighbour.getAvgLatency());
+				queue.addAll(neighbours);
+			}
 		}
 		return numOfTraces;
 	}

@@ -11,4 +11,4 @@ Effort: 3 Hours
 Effort: 5 hours 
 
 12.07
-Effort: 1 hour 30 min
+Effort: 2 hour 30 min

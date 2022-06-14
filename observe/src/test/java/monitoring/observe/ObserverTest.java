@@ -117,5 +117,13 @@ public class ObserverTest {
 		int tracesAtoC = GraphTraversal.getAverageLatencyAtoC4Hops(graphReader.getGraph());
 		assertEquals(ac, tracesAtoC);
 	}
+	
+	@Test
+	public void tracesCtoC30Latency() {
+		String path = "./src/test/resources/graphs/correct";
+		GraphReader graphReader = new GraphReader(path+java.io.File.separator + graphName+".txt");
+		int tracesAtoC = GraphTraversal.getTracesCtoC30Latency(graphReader.getGraph());
+		assertEquals(cc30, tracesAtoC);
+	}
 
 }
