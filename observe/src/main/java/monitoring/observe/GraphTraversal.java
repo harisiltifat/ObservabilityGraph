@@ -192,4 +192,14 @@ public class GraphTraversal {
 		}
 		return numOfTraces;
 	}
+	
+	public static int getShortestTraceAtoC(int[][] graph) {
+		checkGraph(graph);
+		return Dijikstra.shortestPath(graph,0,2);
+	}
+	
+	public static int getShortestTraceBtoB(int[][] graph) {
+		checkGraph(graph);
+		return Dijikstra.shortestPath(graph,1,1);
+	}
 }

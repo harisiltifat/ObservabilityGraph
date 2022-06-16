@@ -11,6 +11,7 @@ public class Node {
     //respresents number of hops needed to reach to this node
     private int hops;
     
+    //respresents total average latency required to reach this node
     private int avgLatency;
     
     public Node(int pos, int hops) {

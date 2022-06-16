@@ -125,5 +125,21 @@ public class ObserverTest {
 		int tracesAtoC = GraphTraversal.getTracesCtoC30Latency(graphReader.getGraph());
 		assertEquals(cc30, tracesAtoC);
 	}
+	
+	@Test
+	public void shortestlengthTraceAtoC() {
+		String path = "./src/test/resources/graphs/correct";
+		GraphReader graphReader = new GraphReader(path+java.io.File.separator + graphName+".txt");
+		int tracesAtoC = GraphTraversal.getShortestTraceAtoC(graphReader.getGraph());
+		assertEquals(acShortestLength, tracesAtoC);
+	}
+	
+	@Test
+	public void shortestlengthTraceBtoB() {
+		String path = "./src/test/resources/graphs/correct";
+		GraphReader graphReader = new GraphReader(path+java.io.File.separator + graphName+".txt");
+		int tracesBtoB = GraphTraversal.getShortestTraceBtoB(graphReader.getGraph());
+		assertEquals(bbShortestLength, tracesBtoB);
+	}
 
 }
