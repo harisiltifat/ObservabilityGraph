@@ -28,6 +28,17 @@ public class GraphTraversalBtoBShortestTraceTest {
 		int avgLatency = GraphTraversal.getShortestTraceBtoB(graph);
 		assertEquals(3, avgLatency);
 	}
+
+	// Test path BAB and BCDB. BCDB is the shortest path. This test is to check the if the length do not
+	// play any role in bringing the correct path.
+	@Test
+	public void graphTestBAB_BCDB() {
+		int[][] graph = { { 0, 2, 0, 0, 0 }, { 10, 0, 4, 0, 0 }, { 0, 0, 0, 5, 0 }, { 0, 1, 0, 0, 0 },
+				{ 0, 0, 0, 0, 0 } };
+		int avgLatency = GraphTraversal.getShortestTraceBtoB(graph);
+		assertEquals(10, avgLatency);
+	}
+	
 	
 
 }

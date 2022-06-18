@@ -78,7 +78,7 @@ public class GraphTraversal {
 		int cpos = 2;
 		int hops = 0;
 		int numOfTraces = 0;
-		List<Node> neighbours = getNeighbours(graph, cpos, hops);
+		List<Node> neighbours = Neighbours.getNeighbours(graph, cpos, hops);
 		Queue<Node> queue = new LinkedList<>();
 		queue.addAll(neighbours);
 
@@ -89,54 +89,13 @@ public class GraphTraversal {
 				if (neighbour.getPos() == cpos)
 					numOfTraces++;
 
-				neighbours = getNeighbours(graph, neighbour.getPos(), neighbour.getHops());
+				neighbours = Neighbours.getNeighbours(graph, neighbour.getPos(), neighbour.getHops());
 				queue.addAll(neighbours);
 			}
 		}
 		return numOfTraces;
 	}
 
-	/**
-	 * Get neighbours of a node. While getting Neighbours, a Node object is used to save the position of the neighbour
-	 * ,total number of hops and total average latency required to reach that neighbour from source.
-	 * @param graph
-	 * @param nodePos
-	 * @param hops
-	 * @param avgLatency
-	 * @return
-	 */
-	private static List<Node> getNeighbours(int[][] graph, int nodePos, int hops, int avgLatency) {
-		return getMyNeighbours(graph, nodePos, hops, avgLatency);
-	}
-	
-	/**
-	 * Get neighbours of a node. While getting Neighbours, a Node object is used to save the position of the neighbour
-	 * ,total number of hops required to reach that neighbour from source.
-	 * @param graph
-	 * @param nodePos
-	 * @param hops
-	 * @param avgLatency
-	 * @return
-	 */
-	private static List<Node> getNeighbours(int[][] graph, int nodePos, int hops) {
-		return getMyNeighbours(graph, nodePos, hops, 0);
-	}
-
-	private static List<Node> getMyNeighbours(int[][] graph, int nodePos, int hops, int avgLatency) {
-		List<Node> lst = new ArrayList<>();
-		hops++;
-		// Adding all childrens of c
-		for (int j = 0; j < graph.length; j++) {
-			// Self loop on node cannot be present. If weight is 0, then no connection is
-			// present
-			if (graph[nodePos][j] == 0)
-				continue;
-			
-			Node node = new Node(j, hops, avgLatency + graph[nodePos][j]);
-			lst.add(node);
-		}
-		return lst;
-	}
 
 	public static int getAverageLatencyAtoC4Hops(int[][] graph) {
 		checkGraph(graph);
@@ -145,7 +104,7 @@ public class GraphTraversal {
 		int endingPos = 2;
 		int hops = 0;
 		int numOfTraces = 0;
-		List<Node> neighbours = getNeighbours(graph, startingPos, hops);
+		List<Node> neighbours = Neighbours.getNeighbours(graph, startingPos, hops);
 		Queue<Node> queue = new LinkedList<>();
 		queue.addAll(neighbours);
 
@@ -157,7 +116,7 @@ public class GraphTraversal {
 				}
 				continue;
 			}
-			neighbours = getNeighbours(graph, neighbour.getPos(), neighbour.getHops());
+			neighbours = Neighbours.getNeighbours(graph, neighbour.getPos(), neighbour.getHops());
 			queue.addAll(neighbours);
 		}
 		return numOfTraces;
@@ -175,7 +134,7 @@ public class GraphTraversal {
 		int hops = 0;
 		int avgLatency=0;
 		int numOfTraces = 0;
-		List<Node> neighbours = getNeighbours(graph, cpos, hops, avgLatency);
+		List<Node> neighbours = Neighbours.getNeighbours(graph, cpos, hops, avgLatency);
 		Queue<Node> queue = new LinkedList<>();
 		queue.addAll(neighbours);
 
@@ -186,7 +145,7 @@ public class GraphTraversal {
 				if (neighbour.getPos() == cpos)
 					numOfTraces++;
 
-				neighbours = getNeighbours(graph, neighbour.getPos(), neighbour.getHops(), neighbour.getAvgLatency());
+				neighbours = Neighbours.getNeighbours(graph, neighbour.getPos(), neighbour.getHops(), neighbour.getAvgLatency());
 				queue.addAll(neighbours);
 			}
 		}
