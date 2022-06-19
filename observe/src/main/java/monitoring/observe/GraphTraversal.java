@@ -7,7 +7,7 @@ import java.util.Objects;
 import java.util.Queue;
 
 import monitoring.exceptions.GraphTraversalException;
-import monitoring.graph.Node;
+import monitoring.tracking.NodeTrack;
 
 public class GraphTraversal {
 
@@ -78,12 +78,12 @@ public class GraphTraversal {
 		int cpos = 2;
 		int hops = 0;
 		int numOfTraces = 0;
-		List<Node> neighbours = Neighbours.getNeighbours(graph, cpos, hops);
-		Queue<Node> queue = new LinkedList<>();
+		List<NodeTrack> neighbours = Neighbours.getNeighbours(graph, cpos, hops);
+		Queue<NodeTrack> queue = new LinkedList<>();
 		queue.addAll(neighbours);
 
 		while (!queue.isEmpty()) {
-			Node neighbour = queue.poll();
+			NodeTrack neighbour = queue.poll();
 
 			if (neighbour.getHops() < 4) {
 				if (neighbour.getPos() == cpos)
@@ -104,12 +104,12 @@ public class GraphTraversal {
 		int endingPos = 2;
 		int hops = 0;
 		int numOfTraces = 0;
-		List<Node> neighbours = Neighbours.getNeighbours(graph, startingPos, hops);
-		Queue<Node> queue = new LinkedList<>();
+		List<NodeTrack> neighbours = Neighbours.getNeighbours(graph, startingPos, hops);
+		Queue<NodeTrack> queue = new LinkedList<>();
 		queue.addAll(neighbours);
 
 		while (!queue.isEmpty()) {
-			Node neighbour = queue.poll();
+			NodeTrack neighbour = queue.poll();
 			if (neighbour.getHops() == 4) {
 				if(neighbour.getPos() == endingPos) {
 					numOfTraces++;
@@ -134,12 +134,12 @@ public class GraphTraversal {
 		int hops = 0;
 		int avgLatency=0;
 		int numOfTraces = 0;
-		List<Node> neighbours = Neighbours.getNeighbours(graph, cpos, hops, avgLatency);
-		Queue<Node> queue = new LinkedList<>();
+		List<NodeTrack> neighbours = Neighbours.getNeighbours(graph, cpos, hops, avgLatency);
+		Queue<NodeTrack> queue = new LinkedList<>();
 		queue.addAll(neighbours);
 
 		while (!queue.isEmpty()) {
-			Node neighbour = queue.poll();
+			NodeTrack neighbour = queue.poll();
 
 			if (neighbour.getAvgLatency() < 30) {
 				if (neighbour.getPos() == cpos)

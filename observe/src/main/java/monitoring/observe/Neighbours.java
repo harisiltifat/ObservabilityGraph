@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import monitoring.exceptions.GraphTraversalException;
-import monitoring.graph.Node;
+import monitoring.tracking.NodeTrack;
 
 public class Neighbours {
 	/**
@@ -16,7 +16,7 @@ public class Neighbours {
 	 * @param avgLatency
 	 * @return
 	 */
-	protected static List<Node> getNeighbours(int[][] graph, int nodePos, int hops, int avgLatency) {
+	protected static List<NodeTrack> getNeighbours(int[][] graph, int nodePos, int hops, int avgLatency) {
 		if(graph==null)
 			throw new GraphTraversalException("Graph is null. Method getNeighbours can't be executed.");
 		return getMyNeighbours(graph, nodePos, hops, avgLatency);
@@ -31,12 +31,12 @@ public class Neighbours {
 	 * @param avgLatency
 	 * @return
 	 */
-	protected static List<Node> getNeighbours(int[][] graph, int nodePos, int hops) {
+	protected static List<NodeTrack> getNeighbours(int[][] graph, int nodePos, int hops) {
 		return getMyNeighbours(graph, nodePos, hops, 0);
 	}
 
-	private static List<Node> getMyNeighbours(int[][] graph, int nodePos, int hops, int avgLatency) {
-		List<Node> lst = new ArrayList<>();
+	private static List<NodeTrack> getMyNeighbours(int[][] graph, int nodePos, int hops, int avgLatency) {
+		List<NodeTrack> lst = new ArrayList<>();
 		hops++;
 		// Adding all childrens of c
 		for (int j = 0; j < graph.length; j++) {
@@ -45,7 +45,7 @@ public class Neighbours {
 			if (graph[nodePos][j] == 0)
 				continue;
 			
-			Node node = new Node(j, hops, avgLatency + graph[nodePos][j]);
+			NodeTrack node = new NodeTrack(j, hops, avgLatency + graph[nodePos][j]);
 			lst.add(node);
 		}
 		return lst;

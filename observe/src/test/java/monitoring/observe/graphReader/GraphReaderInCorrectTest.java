@@ -16,8 +16,8 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 import monitoring.exceptions.GraphReadException;
-import monitoring.graph.Node;
 import monitoring.observe.GraphReader;
+import monitoring.tracking.NodeTrack;
 
 @RunWith(Parameterized.class)
 public class GraphReaderInCorrectTest {

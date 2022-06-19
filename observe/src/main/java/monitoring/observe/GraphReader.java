@@ -12,7 +12,7 @@ import java.util.Objects;
 import java.util.Set;
 
 import monitoring.exceptions.GraphReadException;
-import monitoring.graph.Node;
+import monitoring.tracking.NodeTrack;
 
 public class GraphReader {
 	

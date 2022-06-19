@@ -1,10 +1,11 @@
-package monitoring.graph;
+package monitoring.tracking;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-public class Node {
+/**
+ * Use to track the progress of graph traversal.
+ * @author iltifat
+ *
+ */
+public class NodeTrack {
 	//respresents position of node in the graph
     private int pos;
     
@@ -14,12 +15,12 @@ public class Node {
     //respresents total average latency required to reach this node
     private int avgLatency;
     
-    public Node(int pos, int hops) {
+    public NodeTrack(int pos, int hops) {
     	this.pos=pos;
     	this.hops = hops;
     }
     
-    public Node(int pos, int hops, int avgLatency) {
+    public NodeTrack(int pos, int hops, int avgLatency) {
     	this.pos=pos;
     	this.hops = hops;
     	this.avgLatency=avgLatency;

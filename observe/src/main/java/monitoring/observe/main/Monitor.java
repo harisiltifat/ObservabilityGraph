@@ -1,10 +1,14 @@
-package monitoring.observe;
+package monitoring.observe.main;
+
+import monitoring.observe.GraphOutput;
+import monitoring.observe.GraphReader;
+import monitoring.observe.GraphTraversal;
 
 /**
  * Hello world!
  *
  */
-public class App 
+public class Monitor 
 {
     public static void main( String[] args )
     {

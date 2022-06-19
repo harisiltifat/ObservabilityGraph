@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.PriorityQueue;
 
 import monitoring.exceptions.GraphTraversalException;
-import monitoring.graph.Node;
+import monitoring.tracking.NodeTrack;
 
 public class Dijikstra {
 	
@@ -19,7 +19,7 @@ public class Dijikstra {
 		if(graph==null)
 			throw new GraphTraversalException("Graph is null. Dijikstra can't be executed.");
 		
-		PriorityQueue<Node> queue = new PriorityQueue<>((x, y) -> x.getAvgLatency() - y.getAvgLatency());
+		PriorityQueue<NodeTrack> queue = new PriorityQueue<>((x, y) -> x.getAvgLatency() - y.getAvgLatency());
 
 		//Distance array that represents shortest distance from source to each vertex.
 		int dist[] = new int[graph.length];
@@ -30,16 +30,16 @@ public class Dijikstra {
 			dist[i] = Integer.MAX_VALUE;
 		}
 
-		List<Node> neighbours = Neighbours.getNeighbours(graph, src, 0, 0);
+		List<NodeTrack> neighbours = Neighbours.getNeighbours(graph, src, 0, 0);
 		
 		//Updating distance array of neighbours of source vertex
-		for(Node neighboursNode:neighbours) {
+		for(NodeTrack neighboursNode:neighbours) {
 			dist[neighboursNode.getPos()]=neighboursNode.getAvgLatency();
 		}
 		queue.addAll(neighbours);
 
 		while (!queue.isEmpty()) {
-			Node node = queue.poll();
+			NodeTrack node = queue.poll();
 			//destination Node found with shortest distance.
 			if(node.getPos()==dest) {
 				return node.getAvgLatency();
@@ -48,7 +48,7 @@ public class Dijikstra {
 			
 			//Add neighbour into queue as a node if the distance to reach it is less than the previously
 			//calculated distance.
-			for(Node neighboursNode:neighbours) {
+			for(NodeTrack neighboursNode:neighbours) {
 				if(neighboursNode.getAvgLatency() < dist[neighboursNode.getPos()]) {
 					dist[neighboursNode.getPos()]=neighboursNode.getAvgLatency();
 					queue.add(neighboursNode);
