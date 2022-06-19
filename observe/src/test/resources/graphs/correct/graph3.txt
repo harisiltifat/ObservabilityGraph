@@ -1,2 +1,0 @@
-//Only one later node of the path is present. For e.g. ABC -> BC4
-BC4, CD8, AD5

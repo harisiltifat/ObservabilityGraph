@@ -39,6 +39,9 @@ public class GraphReader {
 	 * @param lst of input as a graph
 	 */
 	private void readGraph(List<String> lst) {
+		if(lst.size()>1 && !lst.get(0).contains("//"))
+			throw new GraphReadException("No two graphs can in the same file can be processed. To add comments in the graph input file use //");
+		
 		if(lst.size()>2)
 			throw new GraphReadException("No two graphs can in the same file can be processed");
 		

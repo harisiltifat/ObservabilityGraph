@@ -1,4 +1,4 @@
-package monitoring.observe;
+package monitoring.observe.utilities;
 
 public class GraphOutput {
 	private GraphOutput() {

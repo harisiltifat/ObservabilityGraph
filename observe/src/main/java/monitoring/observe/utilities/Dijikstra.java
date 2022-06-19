@@ -1,4 +1,4 @@
-package monitoring.observe;
+package monitoring.observe.utilities;
 
 import java.util.List;
 import java.util.PriorityQueue;
@@ -15,7 +15,7 @@ public class Dijikstra {
 	// Function that implements Dijkstra's single source shortest path
 	// algorithm for a graph represented using Priority Queue. Worst case Time
 	// complexity O(E + VlogV). Where E is the total number of edges and V is the total number of vertexes. 
-	protected static int shortestPath(int graph[][], int src, int dest) {
+	public static int shortestPath(int graph[][], int src, int dest) {
 		if(graph==null)
 			throw new GraphTraversalException("Graph is null. Dijikstra can't be executed.");
 		

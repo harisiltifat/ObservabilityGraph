@@ -1,8 +1,8 @@
 package monitoring.observe.main;
 
-import monitoring.observe.GraphOutput;
 import monitoring.observe.GraphReader;
 import monitoring.observe.GraphTraversal;
+import monitoring.observe.utilities.GraphOutput;
 
 /**
  * Hello world!

@@ -26,9 +26,6 @@ public class GraphReaderCorrectTest {
 	    public static Collection<Object[]> data() {
 	        Object[][] data = new Object[][]{
 		        {"graph1",'A','B',5, 'A','E',7}
-		        ,{"graph2",'A','B',5, 'C','D',10}
-		        ,{"graph3",'B','C',4, 'A','D',5}
-		        ,{"graph4",'B','A',5, 'D','A',2}
 		        ,{"graphWithoutDescription",'B','A',5, 'D','A',2}
 	        };
 	        return Arrays.asList(data);

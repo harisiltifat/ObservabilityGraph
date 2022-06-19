@@ -1,2 +1,0 @@
-//Path present but in reverse direction for e.g. AB5 -> BA5
-BA5, DC10, DA2

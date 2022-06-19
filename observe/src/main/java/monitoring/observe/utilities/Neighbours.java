@@ -1,4 +1,4 @@
-package monitoring.observe;
+package monitoring.observe.utilities;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +16,7 @@ public class Neighbours {
 	 * @param avgLatency
 	 * @return
 	 */
-	protected static List<NodeTrack> getNeighbours(int[][] graph, int nodePos, int hops, int avgLatency) {
+	public static List<NodeTrack> getNeighbours(int[][] graph, int nodePos, int hops, int avgLatency) {
 		if(graph==null)
 			throw new GraphTraversalException("Graph is null. Method getNeighbours can't be executed.");
 		return getMyNeighbours(graph, nodePos, hops, avgLatency);
@@ -31,7 +31,9 @@ public class Neighbours {
 	 * @param avgLatency
 	 * @return
 	 */
-	protected static List<NodeTrack> getNeighbours(int[][] graph, int nodePos, int hops) {
+	public static List<NodeTrack> getNeighbours(int[][] graph, int nodePos, int hops) {
+		if(graph==null)
+			throw new GraphTraversalException("Graph is null. Method getNeighbours can't be executed.");
 		return getMyNeighbours(graph, nodePos, hops, 0);
 	}
 

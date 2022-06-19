@@ -1,10 +1,10 @@
-package monitoring.observe.graphTraversal;
+package monitoring.observe.utilities;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import monitoring.observe.GraphOutput;
+import monitoring.observe.utilities.GraphOutput;
 
 public class GraphOutputTest {
 
