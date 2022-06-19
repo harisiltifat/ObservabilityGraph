@@ -11,7 +11,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
-import monitoring.exceptions.ReadGraphException;
+import monitoring.exceptions.GraphReadException;
 import monitoring.graph.Node;
 
 public class GraphReader {
@@ -24,11 +24,11 @@ public class GraphReader {
 		try {
 			lst=Files.readAllLines(Paths.get(path));
 		} catch (IOException ex) {
-			throw new ReadGraphException("Graph cannot be read."+ex.getMessage());
+			throw new GraphReadException("Graph cannot be read."+ex.getMessage());
 		}
 		
 		if(lst.isEmpty())
-			throw new ReadGraphException("Graph is empty.");
+			throw new GraphReadException("Graph is empty.");
 		
 		readGraph(lst);
 	}
@@ -40,7 +40,7 @@ public class GraphReader {
 	 */
 	private void readGraph(List<String> lst) {
 		if(lst.size()>2)
-			throw new ReadGraphException("No two graphs can in the same file can be processed");
+			throw new GraphReadException("No two graphs can in the same file can be processed");
 		
 		int validGraph=0;
 		if(lst.get(0).contains("//")) 
@@ -52,13 +52,13 @@ public class GraphReader {
 		for(String str:graphPaths) {
 			str=str.trim();
 			if(str.length()<3 || Character.isDigit(str.charAt(0)) || Character.isDigit(str.charAt(1))) {
-				throw new ReadGraphException("Invalid graph: Check the input");
+				throw new GraphReadException("Invalid graph: Check the input");
 			}
 			int weight;
 			try {
 				weight=Integer.parseInt(str.substring(2));
 			}catch(NumberFormatException ex) {
-				throw new ReadGraphException("Invalid graph:"+ex.getMessage());
+				throw new GraphReadException("Invalid graph:"+ex.getMessage());
 			}
 			int source=str.charAt(0)-'A';
 			int destination=str.charAt(1)-'A';

@@ -15,7 +15,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-import monitoring.exceptions.ReadGraphException;
+import monitoring.exceptions.GraphReadException;
 import monitoring.graph.Node;
 import monitoring.observe.GraphReader;
 
@@ -42,7 +42,7 @@ public class GraphReaderInCorrectTest {
 	    @Parameterized.Parameter(0)
 	    public String graphName;
 
-	    @Test(expected=ReadGraphException.class)
+	    @Test(expected=GraphReadException.class)
 	    public void testGraph() {
 			new GraphReader(path+java.io.File.separator + graphName+".txt");
 	    }    

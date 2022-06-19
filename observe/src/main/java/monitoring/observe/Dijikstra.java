@@ -3,6 +3,7 @@ package monitoring.observe;
 import java.util.List;
 import java.util.PriorityQueue;
 
+import monitoring.exceptions.GraphTraversalException;
 import monitoring.graph.Node;
 
 public class Dijikstra {
@@ -15,6 +16,9 @@ public class Dijikstra {
 	// algorithm for a graph represented using Priority Queue. Worst case Time
 	// complexity O(E + VlogV). Where E is the total number of edges and V is the total number of vertexes. 
 	protected static int shortestPath(int graph[][], int src, int dest) {
+		if(graph==null)
+			throw new GraphTraversalException("Graph is null. Dijikstra can't be executed.");
+		
 		PriorityQueue<Node> queue = new PriorityQueue<>((x, y) -> x.getAvgLatency() - y.getAvgLatency());
 
 		//Distance array that represents shortest distance from source to each vertex.

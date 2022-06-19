@@ -20,6 +20,15 @@ public class GraphTraversalAtoCShortestTraceTest {
 		GraphTraversal.getShortestTraceAtoC(new int[0][0]);
 	}
 
+	// Test if path from A to C is not present
+	@Test
+	public void graphTestAToCNotPresent() {
+		int[][] graph = { { 0, 3, 0, 0, 0 }, { 1, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0 },
+				{ 0, 0, 0, 0, 0 } };
+		int avgLatency = GraphTraversal.getShortestTraceAtoC(graph);
+		assertEquals(0, avgLatency);
+	}
+
 	// Test direct path A to C
 	@Test
 	public void graphTestAToCDirect() {
@@ -28,9 +37,10 @@ public class GraphTraversalAtoCShortestTraceTest {
 		int avgLatency = GraphTraversal.getShortestTraceAtoC(graph);
 		assertEquals(5, avgLatency);
 	}
-	
-	//There are two paths from A to C. One is A to C and other is A to B to C. Later one is shorter.
-	//This test should bring the later path.
+
+	// There are two paths from A to C. One is A to C and other is A to B to C.
+	// Later one is shorter.
+	// This test should bring the later path.
 	@Test
 	public void graphTestAToBtoC() {
 		int[][] graph = { { 0, 1, 5, 0, 0 }, { 0, 0, 1, 0, 0 }, { 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0 },
@@ -38,7 +48,5 @@ public class GraphTraversalAtoCShortestTraceTest {
 		int avgLatency = GraphTraversal.getShortestTraceAtoC(graph);
 		assertEquals(2, avgLatency);
 	}
-	
-	
 
 }

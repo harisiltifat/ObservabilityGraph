@@ -20,6 +20,15 @@ public class GraphTraversalBtoBShortestTraceTest {
 		GraphTraversal.getShortestTraceBtoB(new int[0][0]);
 	}
 
+	// Test if path from B to C is not present
+	@Test
+	public void graphTestBToBNotPresent() {
+		int[][] graph = { { 0, 0, 4, 0, 0 }, { 1, 0, 0, 0, 0 }, { 5, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0 },
+				{ 0, 0, 0, 0, 0 } };
+		int avgLatency = GraphTraversal.getShortestTraceBtoB(graph);
+		assertEquals(0, avgLatency);
+	}
+
 	// Test path BAB
 	@Test
 	public void graphTestBToBDirect() {
@@ -29,7 +38,8 @@ public class GraphTraversalBtoBShortestTraceTest {
 		assertEquals(3, avgLatency);
 	}
 
-	// Test path BAB and BCDB. BCDB is the shortest path. This test is to check the if the length do not
+	// Test path BAB and BCDB. BCDB is the shortest path. This test is to check the
+	// if the length do not
 	// play any role in bringing the correct path.
 	@Test
 	public void graphTestBAB_BCDB() {
@@ -38,7 +48,5 @@ public class GraphTraversalBtoBShortestTraceTest {
 		int avgLatency = GraphTraversal.getShortestTraceBtoB(graph);
 		assertEquals(10, avgLatency);
 	}
-	
-	
 
 }

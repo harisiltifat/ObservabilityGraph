@@ -1,13 +1,13 @@
 package monitoring.exceptions;
 
-public class ReadGraphException extends RuntimeException {
+public class GraphReadException extends RuntimeException {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 5989394332338603481L;
 	
-	public ReadGraphException(String msg) {
+	public GraphReadException(String msg) {
 		super(msg);
 	}
 

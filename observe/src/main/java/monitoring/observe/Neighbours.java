@@ -3,6 +3,7 @@ package monitoring.observe;
 import java.util.ArrayList;
 import java.util.List;
 
+import monitoring.exceptions.GraphTraversalException;
 import monitoring.graph.Node;
 
 public class Neighbours {
@@ -16,6 +17,8 @@ public class Neighbours {
 	 * @return
 	 */
 	protected static List<Node> getNeighbours(int[][] graph, int nodePos, int hops, int avgLatency) {
+		if(graph==null)
+			throw new GraphTraversalException("Graph is null. Method getNeighbours can't be executed.");
 		return getMyNeighbours(graph, nodePos, hops, avgLatency);
 	}
 	
