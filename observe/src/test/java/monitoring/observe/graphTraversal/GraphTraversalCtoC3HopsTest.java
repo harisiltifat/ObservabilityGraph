@@ -12,12 +12,12 @@ public class GraphTraversalCtoC3HopsTest {
 
 	@Test(expected = NullPointerException.class)
 	public void NullGraphTestAED() {
-		GraphTraversal.getAverageLatencyCtoC3Hops(null);
+		GraphTraversal.getTracesCtoC3Hops(null);
 	}
 
 	@Test(expected = GraphTraversalException.class)
 	public void EmptyGraphTestAED() {
-		GraphTraversal.getAverageLatencyCtoC3Hops(new int[0][0]);
+		GraphTraversal.getTracesCtoC3Hops(new int[0][0]);
 	}
 
 	// Test Path C to C with 2 hops.
@@ -25,7 +25,7 @@ public class GraphTraversalCtoC3HopsTest {
 	public void graphTestCtoCWith2hops() {
 		int[][] graph = { { 0, 0, 1, 0, 0 }, { 0, 0, 0, 0, 0 }, { 1, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0 },
 				{ 0, 0, 0, 0, 0 } };
-		int latency = GraphTraversal.getAverageLatencyCtoC3Hops(graph);
+		int latency = GraphTraversal.getTracesCtoC3Hops(graph);
 		assertEquals(1, latency);
 	}
 
@@ -34,7 +34,7 @@ public class GraphTraversalCtoC3HopsTest {
 	public void graphTestCtoCWith3hops() {
 		int[][] graph = { { 0, 3, 0, 0, 0 }, { 0, 0, 2, 0, 0 }, { 1, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0 },
 				{ 0, 0, 0, 0, 0 } };
-		int latency = GraphTraversal.getAverageLatencyCtoC3Hops(graph);
+		int latency = GraphTraversal.getTracesCtoC3Hops(graph);
 		assertEquals(1, latency);
 	}
 
@@ -43,7 +43,7 @@ public class GraphTraversalCtoC3HopsTest {
 	public void graphTestCtoCWith4hops() {
 		int[][] graph = { { 0, 3, 0, 0, 0 }, { 0, 0, 0, 5, 0 }, { 1, 0, 0, 0, 0 }, { 0, 0, 1, 0, 0 },
 				{ 0, 0, 0, 0, 0 } };
-		int latency = GraphTraversal.getAverageLatencyCtoC3Hops(graph);
+		int latency = GraphTraversal.getTracesCtoC3Hops(graph);
 		assertEquals(0, latency);
 	}
 }

@@ -72,7 +72,7 @@ public class GraphTraversal {
 	 * @param graph
 	 * @return
 	 */
-	public static int getAverageLatencyCtoC3Hops(int[][] graph) {
+	public static int getTracesCtoC3Hops(int[][] graph) {
 		checkGraph(graph);
 		// Position of c in graph
 		int cpos = 2;
@@ -97,7 +97,7 @@ public class GraphTraversal {
 	}
 
 
-	public static int getAverageLatencyAtoC4Hops(int[][] graph) {
+	public static int getTracesAtoC4Hops(int[][] graph) {
 		checkGraph(graph);
 		// Position of c in graph
 		int startingPos = 0;

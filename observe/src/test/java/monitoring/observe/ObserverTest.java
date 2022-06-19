@@ -106,7 +106,7 @@ public class ObserverTest {
 	public void tracesCtoC3Hops() {
 		String path = "./src/test/resources/graphs/correct";
 		GraphReader graphReader = new GraphReader(path+java.io.File.separator + graphName+".txt");
-		int tracesCtoC = GraphTraversal.getAverageLatencyCtoC3Hops(graphReader.getGraph());
+		int tracesCtoC = GraphTraversal.getTracesCtoC3Hops(graphReader.getGraph());
 		assertEquals(cc, tracesCtoC);
 	}
 	
@@ -114,7 +114,7 @@ public class ObserverTest {
 	public void tracesAtoC4Hops() {
 		String path = "./src/test/resources/graphs/correct";
 		GraphReader graphReader = new GraphReader(path+java.io.File.separator + graphName+".txt");
-		int tracesAtoC = GraphTraversal.getAverageLatencyAtoC4Hops(graphReader.getGraph());
+		int tracesAtoC = GraphTraversal.getTracesAtoC4Hops(graphReader.getGraph());
 		assertEquals(ac, tracesAtoC);
 	}
 	

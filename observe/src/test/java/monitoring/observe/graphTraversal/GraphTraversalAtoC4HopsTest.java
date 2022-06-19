@@ -12,12 +12,12 @@ public class GraphTraversalAtoC4HopsTest {
 
 	@Test(expected = NullPointerException.class)
 	public void NullGraphTestAED() {
-		GraphTraversal.getAverageLatencyAtoC4Hops(null);
+		GraphTraversal.getTracesAtoC4Hops(null);
 	}
 
 	@Test(expected = GraphTraversalException.class)
 	public void EmptyGraphTestAED() {
-		GraphTraversal.getAverageLatencyAtoC4Hops(new int[0][0]);
+		GraphTraversal.getTracesAtoC4Hops(new int[0][0]);
 	}
 
 	// Test Path A to C (ABDEC) with exactly 4 hops.
@@ -25,7 +25,7 @@ public class GraphTraversalAtoC4HopsTest {
 	public void graphTestABDEC() {
 		int[][] graph = { { 0, 1, 0, 0, 0 }, { 0, 0, 0, 2, 0 }, { 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 5 },
 				{ 0, 0, 1, 0, 0 } };
-		int latency = GraphTraversal.getAverageLatencyAtoC4Hops(graph);
+		int latency = GraphTraversal.getTracesAtoC4Hops(graph);
 		assertEquals(1, latency);
 	}
 
@@ -34,7 +34,7 @@ public class GraphTraversalAtoC4HopsTest {
 	public void graphTestABCDC() {
 		int[][] graph = { { 0, 1, 0, 0, 0 }, { 0, 0, 3, 0, 0 }, { 0, 0, 0, 1, 0 }, { 0, 0, 1, 0, 0 },
 				{ 0, 0, 0, 0, 0 } };
-		int latency = GraphTraversal.getAverageLatencyAtoC4Hops(graph);
+		int latency = GraphTraversal.getTracesAtoC4Hops(graph);
 		assertEquals(1, latency);
 	}
 
@@ -43,7 +43,7 @@ public class GraphTraversalAtoC4HopsTest {
 	public void graphTestACBDC() {
 		int[][] graph = { { 0, 0, 1, 0, 0 }, { 0, 0, 0, 7, 0 }, { 0, 2, 0, 0, 0 }, { 0, 0, 8, 0, 0 },
 				{ 0, 0, 0, 0, 0 } };
-		int latency = GraphTraversal.getAverageLatencyAtoC4Hops(graph);
+		int latency = GraphTraversal.getTracesAtoC4Hops(graph);
 		assertEquals(1, latency);
 	}
 
@@ -52,7 +52,7 @@ public class GraphTraversalAtoC4HopsTest {
 	public void graphTestSeveralPaths() {
 		int[][] graph = { { 0, 3, 0, 0, 0 }, { 0, 0, 5, 7, 0 }, { 0, 2, 0, 2, 0 }, { 0, 0, 1, 0, 7 },
 				{ 0, 0, 5, 0, 0 } };
-		int latency = GraphTraversal.getAverageLatencyAtoC4Hops(graph);
+		int latency = GraphTraversal.getTracesAtoC4Hops(graph);
 		assertEquals(3, latency);
 	}
 

@@ -12,7 +12,7 @@ public class GraphTraversalCtoC30LatencyTest {
 
 	@Test(expected = NullPointerException.class)
 	public void NullGraphTestAED() {
-		GraphTraversal.getAverageLatencyCtoC3Hops(null);
+		GraphTraversal.getTracesCtoC3Hops(null);
 	}
 
 	@Test(expected = GraphTraversalException.class)
