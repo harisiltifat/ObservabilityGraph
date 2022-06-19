@@ -7,6 +7,10 @@ import monitoring.exceptions.GraphTraversalException;
 import monitoring.tracking.NodeTrack;
 
 public class Neighbours {
+	
+	private Neighbours() {
+		throw new IllegalStateException("Utility class");
+	}
 	/**
 	 * Get neighbours of a node. While getting Neighbours, a Node object is used to save the position of the neighbour
 	 * ,total number of hops and total average latency required to reach that neighbour from source.

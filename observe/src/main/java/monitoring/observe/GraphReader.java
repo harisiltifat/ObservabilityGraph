@@ -24,7 +24,7 @@ public class GraphReader {
 		try {
 			lst=Files.readAllLines(Paths.get(path));
 		} catch (IOException ex) {
-			throw new GraphReadException("Graph cannot be read."+ex.getMessage());
+			throw new GraphReadException("Graph cannot be read."+ex);
 		}
 		
 		if(lst.isEmpty())

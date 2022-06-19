@@ -17,7 +17,7 @@ public class ObserverTest {
     public static Collection<Object[]> data() {
         Object[][] data = new Object[][]{
 	        {"graph1", 9, 5, 13, 22, -1, 2, 3, 9, 9, 7}
-	        ,{"graphWithoutDescription", -1, -1, -1, -1, -1, 2, 3, 9, 9, 7}
+	        ,{"graphWithoutDescription", -1, -1, -1, -1, -1, 0, 0, 0, 0, 0}
         };
         return Arrays.asList(data);
     }
