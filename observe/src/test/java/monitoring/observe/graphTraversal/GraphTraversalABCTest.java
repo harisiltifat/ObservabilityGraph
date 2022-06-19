@@ -26,7 +26,7 @@ public class GraphTraversalABCTest {
 		int[][] graph = { { 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0 },
 				{ 0, 0, 0, 0, 0 } };
 		int latency = GraphTraversal.getAverageLatencyABC(graph);
-		assertTrue(latency == -1);
+		assertEquals(-1, latency);
 	}
 
 	// Test when only AB path is present.
@@ -35,7 +35,7 @@ public class GraphTraversalABCTest {
 		int[][] graph = { { 0, 3, 0, 0, 0 }, { 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0 },
 				{ 0, 0, 0, 0, 0 } };
 		int latency = GraphTraversal.getAverageLatencyABC(graph);
-		assertTrue(latency == -1);
+		assertEquals(-1, latency);
 	}
 
 	// Test when only BC path is present.
@@ -53,7 +53,7 @@ public class GraphTraversalABCTest {
 		int[][] graph = { { 0, 5, 0, 0, 0 }, { 0, 0, 5, 0, 0 }, { 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0 },
 				{ 0, 1, 0, 0, 0 } };
 		int latency = GraphTraversal.getAverageLatencyABC(graph);
-		assertTrue(latency == 10);
+		assertEquals(10, latency);
 	}
 
 }

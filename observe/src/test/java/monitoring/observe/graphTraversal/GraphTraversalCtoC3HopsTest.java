@@ -1,5 +1,6 @@
 package monitoring.observe.graphTraversal;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -25,7 +26,7 @@ public class GraphTraversalCtoC3HopsTest {
 		int[][] graph = { { 0, 0, 1, 0, 0 }, { 0, 0, 0, 0, 0 }, { 1, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0 },
 				{ 0, 0, 0, 0, 0 } };
 		int latency = GraphTraversal.getAverageLatencyCtoC3Hops(graph);
-		assertTrue(latency == 1);
+		assertEquals(1, latency);
 	}
 
 	// Test Path C to C with 3 hops.
@@ -34,7 +35,7 @@ public class GraphTraversalCtoC3HopsTest {
 		int[][] graph = { { 0, 3, 0, 0, 0 }, { 0, 0, 2, 0, 0 }, { 1, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0 },
 				{ 0, 0, 0, 0, 0 } };
 		int latency = GraphTraversal.getAverageLatencyCtoC3Hops(graph);
-		assertTrue(latency == 1);
+		assertEquals(1, latency);
 	}
 
 	// Test Path C to C with 4 hops.
@@ -43,6 +44,6 @@ public class GraphTraversalCtoC3HopsTest {
 		int[][] graph = { { 0, 3, 0, 0, 0 }, { 0, 0, 0, 5, 0 }, { 1, 0, 0, 0, 0 }, { 0, 0, 1, 0, 0 },
 				{ 0, 0, 0, 0, 0 } };
 		int latency = GraphTraversal.getAverageLatencyCtoC3Hops(graph);
-		assertTrue(latency == 0);
+		assertEquals(0, latency);
 	}
 }

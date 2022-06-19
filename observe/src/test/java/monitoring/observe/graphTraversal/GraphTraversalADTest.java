@@ -1,5 +1,6 @@
 package monitoring.observe.graphTraversal;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -25,7 +26,7 @@ public class GraphTraversalADTest {
 		int[][] graph = { { 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0 },
 				{ 0, 0, 0, 0, 0 } };
 		int latency = GraphTraversal.getAverageLatencyAD(graph);
-		assertTrue(latency == -1);
+		assertEquals(-1, latency);
 	}
 
 	
@@ -35,6 +36,6 @@ public class GraphTraversalADTest {
 		int[][] graph = { { 0, 0, 0, 6, 0 }, { 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0 },
 				{ 0, 0, 0, 0, 0 } };
 		int latency = GraphTraversal.getAverageLatencyAD(graph);
-		assertTrue(latency == 6);
+		assertEquals(6, latency);
 	}
 }

@@ -1,5 +1,6 @@
 package monitoring.observe.graphTraversal;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -25,7 +26,7 @@ public class GraphTraversalAtoC4HopsTest {
 		int[][] graph = { { 0, 1, 0, 0, 0 }, { 0, 0, 0, 2, 0 }, { 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 5 },
 				{ 0, 0, 1, 0, 0 } };
 		int latency = GraphTraversal.getAverageLatencyAtoC4Hops(graph);
-		assertTrue(latency == 1);
+		assertEquals(1, latency);
 	}
 
 	// Test Path A to C (ABCDC) with exactly 4 hops.
@@ -34,7 +35,7 @@ public class GraphTraversalAtoC4HopsTest {
 		int[][] graph = { { 0, 1, 0, 0, 0 }, { 0, 0, 3, 0, 0 }, { 0, 0, 0, 1, 0 }, { 0, 0, 1, 0, 0 },
 				{ 0, 0, 0, 0, 0 } };
 		int latency = GraphTraversal.getAverageLatencyAtoC4Hops(graph);
-		assertTrue(latency == 1);
+		assertEquals(1, latency);
 	}
 
 	// Test Path A to C (ACBDC) with exactly 4 hops.
@@ -43,7 +44,7 @@ public class GraphTraversalAtoC4HopsTest {
 		int[][] graph = { { 0, 0, 1, 0, 0 }, { 0, 0, 0, 7, 0 }, { 0, 2, 0, 0, 0 }, { 0, 0, 8, 0, 0 },
 				{ 0, 0, 0, 0, 0 } };
 		int latency = GraphTraversal.getAverageLatencyAtoC4Hops(graph);
-		assertTrue(latency == 1);
+		assertEquals(1, latency);
 	}
 
 	// Test more paths from A to C (ABDEC, ABCDC and ABCBC)with exactly 4 hops.
@@ -52,7 +53,7 @@ public class GraphTraversalAtoC4HopsTest {
 		int[][] graph = { { 0, 3, 0, 0, 0 }, { 0, 0, 5, 7, 0 }, { 0, 2, 0, 2, 0 }, { 0, 0, 1, 0, 7 },
 				{ 0, 0, 5, 0, 0 } };
 		int latency = GraphTraversal.getAverageLatencyAtoC4Hops(graph);
-		assertTrue(latency == 3);
+		assertEquals(3, latency);
 	}
 
 }

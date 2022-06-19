@@ -1,5 +1,6 @@
 package monitoring.observe.graphTraversal;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -25,7 +26,7 @@ public class GraphTraversalAEBCDTest {
 		int[][] graph = { { 0, 0, 0, 0, 5 }, { 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0 },
 				{ 0, 0, 0, 0, 0 } };
 		int latency = GraphTraversal.getAverageLatencyAEBCD(graph);
-		assertTrue(latency == -1);
+		assertEquals(-1, latency);
 	}
 
 	// Test when only EB path is present.
@@ -34,7 +35,7 @@ public class GraphTraversalAEBCDTest {
 		int[][] graph = { { 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0 },
 				{ 0, 1, 0, 0, 0 } };
 		int latency = GraphTraversal.getAverageLatencyAEBCD(graph);
-		assertTrue(latency == -1);
+		assertEquals(-1, latency);
 	}
 
 	// Test when only BC path is present.
@@ -43,7 +44,7 @@ public class GraphTraversalAEBCDTest {
 		int[][] graph = { { 0, 0, 0, 0, 0 }, { 0, 0, 6, 0, 0 }, { 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0 },
 				{ 0, 0, 0, 0, 0 } };
 		int latency = GraphTraversal.getAverageLatencyAEBCD(graph);
-		assertTrue(latency == -1);
+		assertEquals(-1, latency);
 	}
 
 	// Test when only BC path is present.
@@ -52,7 +53,7 @@ public class GraphTraversalAEBCDTest {
 		int[][] graph = { { 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0 }, { 0, 0, 0, 10, 0 }, { 0, 0, 0, 0, 0 },
 				{ 0, 0, 0, 0, 0 } };
 		int latency = GraphTraversal.getAverageLatencyAEBCD(graph);
-		assertTrue(latency == -1);
+		assertEquals(-1, latency);
 	}
 
 	// Test with valid graph where AEBCD path is present
@@ -61,6 +62,6 @@ public class GraphTraversalAEBCDTest {
 		int[][] graph = { { 0, 0, 0, 0, 5 }, { 0, 0, 2, 0, 0 }, { 0, 0, 0, 100, 0 }, { 0, 0, 0, 0, 0 },
 				{ 0, 3, 0, 0, 0 } };
 		int latency = GraphTraversal.getAverageLatencyAEBCD(graph);
-		assertTrue(latency == 110);
+		assertEquals(110, latency);
 	}
 }

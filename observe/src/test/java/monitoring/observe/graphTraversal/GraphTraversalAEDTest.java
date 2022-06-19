@@ -1,5 +1,6 @@
 package monitoring.observe.graphTraversal;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -25,7 +26,7 @@ public class GraphTraversalAEDTest {
 		int[][] graph = { { 0, 0, 0, 0, 5 }, { 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0 },
 				{ 0, 0, 0, 0, 0 } };
 		int latency = GraphTraversal.getAverageLatencyAED(graph);
-		assertTrue(latency == -1);
+		assertEquals(-1, latency);
 	}
 
 	// Test when only ED path is present.
@@ -34,7 +35,7 @@ public class GraphTraversalAEDTest {
 		int[][] graph = { { 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0 }, { 0, 0, 6, 0, 0 },
 				{ 0, 0, 0, 1, 0 } };
 		int latency = GraphTraversal.getAverageLatencyAED(graph);
-		assertTrue(latency == -1);
+		assertEquals(-1, latency);
 	}
 
 
@@ -45,6 +46,6 @@ public class GraphTraversalAEDTest {
 		int[][] graph = { { 0, 0, 0, 0, 5 }, { 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0 },
 				{ 0, 0, 0, 1, 0 } };
 		int latency = GraphTraversal.getAverageLatencyAED(graph);
-		assertTrue(latency == 6);
+		assertEquals(6, latency);
 	}
 }
